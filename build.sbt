@@ -28,18 +28,20 @@ lazy val backend = (project in file("backend"))
   .settings(commonSettings)
   .settings(
     scalaJSUseMainModuleInitializer := true,
-    stUseScalaJsDom := false,
+    stUseScalaJsDom := true,
     stEnableScalaJsDefined :=  Selection.All,
     stEnableLongApplyMethod := false,
     Compile / npmDependencies ++= Seq(
-      "@types/node" -> " 14.14.14",
+      "@types/node" -> " 16.11.9",
       "@types/aws-lambda" -> "8.10.85",
       "cloudevents" -> "5.0.0",
       "sharp" → "0.29.3",
       "canvas" → "2.8.0",
       "@types/sharp" → "0.29.3",
       "@tensorflow/tfjs-node" → "3.11.0",
-      "@koush/face-api.js" → "0.22.3",
+      "@tensorflow/tfjs-backend-cpu" → "3.11.0",
+      "@tensorflow/tfjs-core" → "3.11.0",
+      "@tensorflow-models/blazeface" → "0.0.7",
       "cross-fetch" → "3.1.4"
     )
   )
