@@ -39,8 +39,8 @@ lazy val backend = (project in file("backend"))
       "canvas" → "2.8.0",
       "@types/sharp" → "0.29.3",
       "@tensorflow/tfjs-node" → "3.11.0",
-      "@tensorflow/tfjs-backend-cpu" → "3.11.0",
-      "@tensorflow/tfjs-core" → "3.11.0",
+      //"@tensorflow/tfjs-backend-cpu" → "3.11.0",
+      //"@tensorflow/tfjs-core" → "3.11.0",
       "@tensorflow-models/blazeface" → "0.0.7",
       "cross-fetch" → "3.1.4"
     )

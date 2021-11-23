@@ -10,7 +10,8 @@ import typings.cloudevents.cloudeventMod.CloudEvent
 import typings.node.nodeStrings
 import typings.node.bufferMod.global.BufferEncoding.utf8
 import typings.node.utilMod.TextEncoder
-import typings.tensorflowTfjsCore.distTensorMod.Tensor3D
+import typings.tensorflowTfjsCore.distTensorMod.{Tensor3D, Tensor4D}
+import typings.tensorflowTfjsNode.mod.*
 
 import scala.language.postfixOps
 import scala.concurrent.Future
@@ -20,6 +21,7 @@ import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.math.Integral.Implicits.infixIntegralOps
 import scala.math.Numeric.Implicits.infixNumericOps
+import scala.scalajs.js.JSConverters.iterableOnceConvertible2JSRichIterableOnce
 import scala.scalajs.js.{JSON, Promise, typedarray}
 import scala.scalajs.js.Promise.reject
 import scala.scalajs.js.typedarray.{Uint16Array, Uint8Array}
@@ -28,28 +30,17 @@ object Runner  {
   val MODEL_URL = """/models"""
 
   def main(args: Array[String]): Unit = {
-    val fetch : (String, scala.scalajs.js.UndefOr[org.scalajs.dom.experimental.RequestInit]) => scala.scalajs.js.Promise[org.scalajs.dom.experimental.Response] = (s:String,r:scala.scalajs.js.UndefOr[org.scalajs.dom.experimental.RequestInit] ) ⇒ {
-      val ff  = r.map(rr ⇒ typings.crossFetch.mod.fetch(s,rr))
-      ff.getOrElse({
-        println("Fetch returned undef")
-        reject(Promise)
-      })
-    }
-    println(typings.tensorflowTfjsBackendCpu.mod.versionCpu)
+    //ToDo:: remove workaround to var $i_$0040tensorflow$002ftfjs$002dnode = require("@tensorflow/tfjs-node");
+    typings.tensorflowTfjsNode.mod.backend()
     val iurl= """/images/stefan.jpg"""
     val aa = for {
-      input ← typings.canvas.mod.loadImage(iurl).toFuture
-      canvas ← Future.apply(typings.canvas.mod.createCanvas(width = input.width,height =input.height))
-      ctx ← Future.apply(canvas.getContext_2d(typings.canvas.canvasStrings.`2d`))
-      cc ← Future.apply(ctx.drawImage(input,0,0,input.width,input.height))
       model ← typings.tensorflowModelsBlazeface.mod.load().toFuture
-      imageData ← Future.apply(typings.tensorflowTfjsNode.imageMod.decodeImage(canvas.toBuffer().asInstanceOf[Uint8Array]))
-      forecast ← Future.apply(model.estimateFaces(imageData.asInstanceOf[Tensor3D]))
+      image ← typings.node.fsPromisesMod.readFile(iurl).toFuture
+      imageData ← Future.apply(typings.tensorflowTfjsNode.nodeMod.node.decodeImage(image.asInstanceOf[Uint8Array]))
+      forecast ←  model.estimateFaces(imageData.asInstanceOf[Tensor3D]).toFuture
     } yield forecast
     js.timers.setTimeout(5000) {
-      println("dfasd")
-
-      println("asd"+aa.value)
+      aa.map(a ⇒ println(JSON.stringify(a)))
     }
   }
 }
