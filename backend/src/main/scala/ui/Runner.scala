@@ -35,18 +35,17 @@ object Runner  {
   def main(args: Array[String]): Unit = {
     //ToDo:: remove workaround to var $i_$0040tensorflow$002ftfjs$002dnode = require("@tensorflow/tfjs-node");
     typings.tensorflowTfjsNode.mod.backend()
-    val iurl= """/images/stefan.jpg"""
+    val iurl= """/images/MS_Wahlers.jpg"""
     val aa = for {
       model ← typings.tensorflowModelsBlazeface.mod.load().toFuture
       image ← typings.node.fsPromisesMod.readFile(iurl).toFuture
       imageData ← Future.apply(typings.tensorflowTfjsNode.nodeMod.node.decodeImage(image.asInstanceOf[Uint8Array]))
       forecast ← model.estimateFaces(imageData.asInstanceOf[Tensor3D]).toFuture //ToDo:: match instead of cast
       sharp ← Future.successful(typings.sharp.mod.apply(image,typings.sharp.mod.SharpOptions.apply().setFailOnError(true)))
-      meta ← sharp.metadata().toFuture.map(a ⇒ JSON.stringify(a)).map(println)
       boxes ← forecast.map(BoundingBox.from).toList.traverse(identity).fold(Future.failed,Future.apply) // move to EitherT
       removed ← removeSubImages(sharp,boxes)
       buffer ← removed.png().toBuffer().toFuture
-      write ← typings.node.fsPromisesMod.writeFile( """/images/stefan_a.jpg""",buffer).toFuture
+      write ← typings.node.fsPromisesMod.writeFile( """/images/MS_Wahlers_a.png""",buffer).toFuture
     } yield write
     aa.onComplete(_ ⇒ println("finished"))
   }
@@ -59,7 +58,7 @@ object Anonymizer {
   object BoundingBox{
     def from : NormalizedFace => Either[Throwable,BoundingBox] = (nf :NormalizedFace) => Try{
       val topLeft : scala.scalajs.js.Tuple2[Double, Double] = nf.topLeft.asInstanceOf[scala.scalajs.js.Tuple2[Double, Double]]
-      val botR : scala.scalajs.js.Tuple2[Double, Double] =  nf.asInstanceOf[scala.scalajs.js.Tuple2[Double, Double]]
+      val botR : scala.scalajs.js.Tuple2[Double, Double] =  nf.bottomRight.asInstanceOf[scala.scalajs.js.Tuple2[Double, Double]]
       BoundingBox((botR._1-topLeft._1).toInt,(botR._2-topLeft._2).toInt,(topLeft._1).toInt,(topLeft._2).toInt)
     }.toEither
   }
