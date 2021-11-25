@@ -9,8 +9,12 @@ lazy val commonSettings = Seq(
   name := "ScaLambda-Frontend-BluePrint",
   libraryDependencies ++= { Seq(
     "com.lihaoyi" %%% "upickle" % "1.4.2",
-    "org.typelevel" %%% "cats-core" % "2.6.1"
-  )},
+    "org.typelevel" %%% "cats-core" % "2.6.1",
+    "org.typelevel" %%% "cats-effect" % "3.2.9",
+    "org.scalatest" %%% "scalatest" % "3.2.10" % Test,
+    "org.typelevel" %%% "cats-effect-testing-scalatest" % "1.3.0" % Test
+
+    )},
   scalaJSLinkerConfig ~= (_.withModuleKind(ModuleKind.CommonJSModule)),
 
 )

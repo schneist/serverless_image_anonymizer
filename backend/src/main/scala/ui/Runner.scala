@@ -1,4 +1,7 @@
 package ui
+import cats.MonadError
+import cats.data.EitherT
+import cats.effect.IO
 import org.scalablytyped.runtime.StObject
 import org.scalajs.dom.raw
 import org.scalajs.dom.raw.{FileReader, HTMLCanvasElement}
@@ -14,6 +17,8 @@ import typings.node.utilMod.TextEncoder
 import typings.sharp.mod.{OverlayOptions, Region, Sharp}
 import typings.tensorflowTfjsCore.distTensorMod.*
 import typings.tensorflowTfjsNode.mod.*
+import cats.implicits.*
+
 import scalajs.js.JSConverters.JSRichFutureNonThenable
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.{Await, Future}
@@ -26,30 +31,37 @@ import scala.scalajs.js.JSConverters.{JSRichFutureThenable, iterableOnceConverti
 import scala.scalajs.js.Promise.reject
 import scala.scalajs.js.typedarray.{Uint16Array, Uint8Array}
 import scala.scalajs.js.{JSON, Promise, typedarray}
-import scala.util.Try
-import cats.implicits.*
+import scala.util.{Failure, Success, Try}
 import typings.tensorflowModelsBlazeface.faceMod.NormalizedFace
+import typings.tensorflowModelsBlazeface.mod.BlazeFaceConfig
 import ui.Anonymizer.*
+
 object Runner  {
 
   def main(args: Array[String]): Unit = {
     //ToDo:: remove workaround to var $i_$0040tensorflow$002ftfjs$002dnode = require("@tensorflow/tfjs-node");
     typings.tensorflowTfjsNode.mod.backend()
-    val iurl= """/images/MS_Wahlers.jpg"""
+    val iurl= """/images/wanderer.jpg"""
     val aa = for {
-      model ← typings.tensorflowModelsBlazeface.mod.load().toFuture
       image ← typings.node.fsPromisesMod.readFile(iurl).toFuture
       imageData ← Future.apply(typings.tensorflowTfjsNode.nodeMod.node.decodeImage(image.asInstanceOf[Uint8Array]))
+      model ← typings.tensorflowModelsBlazeface.mod.load(BlazeFaceConfig().setScoreThreshold(0.01).setMaxFaces(10)).toFuture
       forecast ← model.estimateFaces(imageData.asInstanceOf[Tensor3D]).toFuture //ToDo:: match instead of cast
+      log ← Future.successful(println(forecast.length))
       sharp ← Future.successful(typings.sharp.mod.apply(image,typings.sharp.mod.SharpOptions.apply().setFailOnError(true)))
       boxes ← forecast.map(BoundingBox.from).toList.traverse(identity).fold(Future.failed,Future.apply) // move to EitherT
       removed ← removeSubImages(sharp,boxes)
       buffer ← removed.png().toBuffer().toFuture
-      write ← typings.node.fsPromisesMod.writeFile( """/images/MS_Wahlers_a.png""",buffer).toFuture
+      write ← typings.node.fsPromisesMod.writeFile( """/images/out.png""",buffer).toFuture
     } yield write
     aa.onComplete(_ ⇒ println("finished"))
   }
 }
+
+
+
+
+
 
 object Anonymizer {
 
