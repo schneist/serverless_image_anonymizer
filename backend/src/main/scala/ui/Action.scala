@@ -26,19 +26,17 @@ object LoadImageAction extends Action[EnvironmentWithExecutionContext,String,Uin
               me: cats.MonadError[cats.effect.IO, LoadImageErrors]
              ):cats.data.EitherT[cats.effect.IO, LoadImageErrors, Uint8Array] = {
     implicit val ec = environment.getExecutionContext()
-    for {
-      image ← EitherT(
-        IO.fromFuture(IO(
-          typings.node.fsPromisesMod.readFile(filepath).toFuture.map(a ⇒ {println("################################");a.asInstanceOf[Uint8Array]}).transform { a ⇒
-            println("################################")
-            a match {
-              case f: Failure[Throwable] ⇒ Try(Left(FileNotFound()))
-              case s: Success[Buffer] ⇒ Try(Right(s))
-            }
+    EitherT(
+      IO.fromFuture(IO(
+        typings.node.fsPromisesMod.readFile(filepath).toFuture.map(_.asInstanceOf[Uint8Array])
+          .transform { _
+          match {
+            case s: Success[Uint8Array] ⇒ Try(Right(s.get))
+            case f: _ ⇒ Try(Left(FileNotFound()))
           }
-        ))
-      )
-    } yield image.get
+        }
+      ))
+    )
   }
 
   def checkFileAccess(filepath: String)

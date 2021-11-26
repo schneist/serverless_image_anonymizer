@@ -14,27 +14,13 @@ import scala.util.{Failure, Success, Try}
 import org.scalatest.matchers.should.*
 import org.scalatest.freespec.AsyncFreeSpec
 import cats.effect.testing.scalatest.AsyncIOSpec
+import typings.node.bufferMod.global.Buffer
 
 import scala.language.postfixOps
 import scala.Unit
 import ui.FileNotFound
 
-
-class MySpec extends AsyncFreeSpec with AsyncIOSpec with Matchers {
-  val existingPath = "/images/stefan.png"
-  val me = summon[cats.MonadError[cats.effect.IO, LoadImageErrors]]
-
-  given EnvironmentWithExecutionContext = new EnvironmentWithExecutionContext {
-    override def getExecutionContext(): ExecutionContext = scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
-  }
-
-  given cats.MonadError[cats.effect.IO, LoadImageErrors] = me
-
-  implicit override def executionContext = scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
-
-  LoadImageAction.execute(existingPath).value.unsafeToFuture().map(println)
-
-}
+import scala.scalajs.js.typedarray.Uint8Array
 
 
 class ActionTest extends AsyncFunSpec with AsyncIOSpec with Matchers{
@@ -68,15 +54,15 @@ class ActionTest extends AsyncFunSpec with AsyncIOSpec with Matchers{
     describe("when opening") {
       describe("an non existing File") {
         it("should return a domain excption") {
-          LoadImageAction.execute(existingPath).value.unsafeToFuture().map(println)
-          true shouldBe true
+          LoadImageAction.execute(existingPath).value.asserting( _.isRight shouldBe true)
         }
       }
       describe("an existing File") {
-        it("should return unit") {
-          LoadImageAction.execute(nonExistingPath).value.asserting( _.isRight shouldBe true)
+        it("should return the File Content as UInt8Array") {
+          LoadImageAction.execute(nonExistingPath).value.asserting( _.isLeft shouldBe true)
         }
       }
     }
   }
 }
+
