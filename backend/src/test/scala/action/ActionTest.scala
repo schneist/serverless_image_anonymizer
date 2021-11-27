@@ -2,15 +2,17 @@ package action
 import cats.MonadError
 import cats.data.{EitherT, EitherTMonad}
 import cats.effect.*
+import cats.effect.unsafe.IORuntime.global
 import org.scalatest.funspec.*
-import ui.{AnonymizationErrors, ConversionErrors, EnvironmentWithExecutionContext, ExtractImageDataAction, FileNotFound, LoadImageAction, LoadImageErrors}
+import ui.*
 
 import concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.{Await, ExecutionContext, ExecutionContextExecutor, Future}
 import cats.implicits.*
-import cats.data.EitherT._
+import cats.data.EitherT.*
 import cats.data.*
-import cats._
+import cats.*
+
 import javax.swing.text.ElementIterator
 import scala.util.{Failure, Success, Try}
 import org.scalatest.matchers.should.*
@@ -20,6 +22,7 @@ import typings.node.bufferMod.global.Buffer
 
 import scala.language.postfixOps
 import scala.Unit
+import scala.scalajs.js.JSON
 import scala.scalajs.js.typedarray.Uint8Array
 
 
@@ -53,12 +56,12 @@ class ActionTest extends AsyncFunSpec with AsyncIOSpec with Matchers{
       }
     }
     describe("when opening") {
-      describe("an non existing File") {
+      describe("an  existing File") {
         it("should return a domain excption") {
-         LoadImageAction.execute(existingPath).value.asserting( _.isRight shouldBe true)
+          LoadImageAction.execute(existingPath).value.asserting( _.isRight shouldBe true)
         }
       }
-      describe("an existing File") {
+      describe("an non existing File") {
         it("should return the File Content as UInt8Array") {
           LoadImageAction.execute(nonExistingPath).value.asserting( _.isLeft shouldBe true)
         }
@@ -76,5 +79,49 @@ class ActionTest extends AsyncFunSpec with AsyncIOSpec with Matchers{
       }
     }
   }
+  describe(" A ModelLoadAction") {
+    describe("when loading") {
+      it("should return a Model") {
+        ModelLoadAction.execute(()).value.asserting( _.isRight shouldBe true)
+      }
+    }
+  }
+  describe("An EstimateFaceAction") {
+    describe("when estimating") {
+      it("should find a face") {
+        val aa = for {
+          array <- LoadImageAction.execute(existingPath)
+          imageData <- ExtractImageDataAction.execute(array)
+          model ← ModelLoadAction.execute(())
+          estimate ← EstimateFacesAction.execute((imageData,model))
+        } yield estimate
+        aa.value.asserting(_.fold(_ ⇒ false,estimation ⇒ {
+          estimation.length == 1 &&
+            estimation.head.probability.get.toString.toDouble >= 0.1
+        }) shouldBe true)
+      }
+    }
+  }
+
+  describe("An AnonymizationFlow ") {
+
+    it("should find anyonymize a face") {
+      val aa = for {
+        array <- LoadImageAction.execute(existingPath)
+        imageData <- ExtractImageDataAction.execute(array)
+        model ← ModelLoadAction.execute(())
+        estimate ← EstimateFacesAction.execute((imageData,model))
+        sharp ← CreateSharpAction.execute(array)
+        boxes ← BoundingBoxAction.execute(estimate)
+        blurred ← BlurAction.execute((sharp,boxes))
+        png ← SharpToPNGBufferAction.execute(blurred)
+        written ← FileWriteAction.execute(png)
+      } yield written
+      aa.value.asserting(_.isRight shouldBe true)
+    }
+  }
 }
+
+
+
 
