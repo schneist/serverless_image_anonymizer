@@ -10,7 +10,7 @@ lazy val commonSettings = Seq(
   libraryDependencies ++= { Seq(
     "com.lihaoyi" %%% "upickle" % "1.4.2",
     "org.typelevel" %%% "cats-core" % "2.6.1",
-    "org.typelevel" %%% "cats-effect" % "3.2.9",
+    "org.typelevel" %%% "cats-effect" % "3.3.0",
     "org.scalatest" %%% "scalatest" % "3.2.10" % Test,
     "org.typelevel" %%% "cats-effect-testing-scalatest" % "1.3.0" % Test
 
@@ -43,8 +43,6 @@ lazy val backend = (project in file("backend"))
       "canvas" → "2.8.0",
       "@types/sharp" → "0.29.3",
       "@tensorflow/tfjs-node" → "3.11.0",
-      //"@tensorflow/tfjs-backend-cpu" → "3.11.0",
-      //"@tensorflow/tfjs-core" → "3.11.0",
       "@tensorflow-models/blazeface" → "0.0.7",
       "cross-fetch" → "3.1.4"
     )
@@ -63,6 +61,7 @@ lazy val frontend = (project in file("frontend"))
       "react-dom" -> "17.0.2",
       "@types/react" -> "17.0.33",
       "@types/react-dom" -> "17.0.10",
+      "use-file-picker" → "1.4.1"
     ),
     webpackBundlingMode := BundlingMode.LibraryAndApplication("appLibrary"),
 

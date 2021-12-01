@@ -56,6 +56,7 @@ object SharpToPNGBufferAction extends Action[EnvironmentWithExecutionContext,Sha
 object FileWriteAction extends Action[EnvironmentWithExecutionContext,Buffer,Unit,LoadImageErrors] {
   override def execute[Err >: LoadImageErrors](buffer: Buffer)
                                               (using environment: EnvironmentWithExecutionContext,
+
                                               ): EitherT[IO, Err, Unit] = {
     implicit val ec = environment.getExecutionContext()
     EitherT(
@@ -216,10 +217,6 @@ object LoadImageAction extends Action[EnvironmentWithExecutionContext,String,Uin
     }
   }
 }
-
-
-
-
 
 trait Environment
 
