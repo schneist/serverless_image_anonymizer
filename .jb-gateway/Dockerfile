@@ -16,9 +16,9 @@ RUN apt-get install -y \
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 ENV NVM_DIR=/root/.nvm
-RUN . "$NVM_DIR/nvm.sh" && nvm install latest
-RUN . "$NVM_DIR/nvm.sh" && nvm use latest
-RUN . "$NVM_DIR/nvm.sh" && nvm alias default latest
+RUN . "$NVM_DIR/nvm.sh" && nvm install node
+RUN . "$NVM_DIR/nvm.sh" && nvm use node
+RUN . "$NVM_DIR/nvm.sh" && nvm alias default node
   
 RUN echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" | tee /etc/apt/sources.list.d/sbt.list
 RUN echo "deb https://repo.scala-sbt.org/scalasbt/debian /" | tee /etc/apt/sources.list.d/sbt_old.list
