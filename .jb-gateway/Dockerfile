@@ -23,18 +23,5 @@ RUN apt-get update
 RUN apt-get install -y sbt
 
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-
-RUN rm /bin/sh && \
-	ln -s /bin/bash /bin/sh && \
-	mkdir -p /root/.nvm
-
-ENV NVM_DIR /root/.nvm
-ENV NODE_VERSION 17.3.0
-
-RUN apt-get update --fix-missing 
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.39.1/install.sh | bash 
-RUN	source $NVM_DIR/nvm.sh  
-RUN	nvm install $NODE_VERSION 
-RUN nvm use $NODE_VERSION 
-
-ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+run curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
+run apt-get install -y nodejs
