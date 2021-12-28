@@ -24,8 +24,23 @@ RUN apt-get install -y sbt
 
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 
-SHELL ["/bin/bash", "--login", "-i", "-c"]
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-RUN source /root/.bashrc && nvm install node 
-RUN source /root/.bashrc && nvm use node 
-SHELL ["/bin/bash", "--login", "-c"]
+RUN rm /bin/sh && \
+	ln -s /bin/bash /bin/sh && \
+	mkdir -p /root/.nvm
+
+ENV NVM_DIR /root/.nvm
+ENV NODE_VERSION 17.3.0
+
+RUN apt-get update --fix-missing && \
+	##############################################################################
+	# Install: nvm, node and npm
+	# @see: http://stackoverflow.com/questions/25899912/install-nvm-in-docker
+	##############################################################################
+	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash && \
+	source $NVM_DIR/nvm.sh && \
+	nvm install $NODE_VERSION && \
+	nvm cache clear && \
+	apt-get remove -y curl && \
+	rm -rf /var/lib/apt/lists/*
+
+ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
