@@ -9,7 +9,7 @@ RUN apt-get install -y \
   openjdk-11-jdk \
   sbt \
   scala \
-  node \
+  nodejs \
   && rm -rf /var/lib/apt/lists/*
 
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
