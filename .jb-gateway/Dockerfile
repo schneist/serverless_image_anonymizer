@@ -31,13 +31,10 @@ RUN rm /bin/sh && \
 ENV NVM_DIR /root/.nvm
 ENV NODE_VERSION 17.3.0
 
-RUN apt-get update --fix-missing && \
-	##############################################################################
-	# Install: nvm, node and npm
-	# @see: http://stackoverflow.com/questions/25899912/install-nvm-in-docker
-	##############################################################################
-	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.39.1/install.sh | bash && \
-	source $NVM_DIR/nvm.sh && \
-	nvm install $NODE_VERSION 
+RUN apt-get update --fix-missing 
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.39.1/install.sh | bash 
+RUN	source $NVM_DIR/nvm.sh  
+RUN	nvm install $NODE_VERSION 
+RUN nvm use $NODE_VERSION 
 
 ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
