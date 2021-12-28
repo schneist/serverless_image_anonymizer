@@ -23,5 +23,5 @@ RUN apt-get update
 RUN apt-get install -y sbt
 
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-run curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
+run curl -fsSL https://deb.nodesource.com/setup_17.x | bash -
 run apt-get install -y nodejs
