@@ -36,7 +36,7 @@ RUN apt-get update --fix-missing && \
 	# Install: nvm, node and npm
 	# @see: http://stackoverflow.com/questions/25899912/install-nvm-in-docker
 	##############################################################################
-	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash && \
+	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.39.1/install.sh | bash && \
 	source $NVM_DIR/nvm.sh && \
 	nvm install $NODE_VERSION && \
 	nvm cache clear && \
