@@ -39,13 +39,13 @@ class ActionTest extends AsyncFunSpec with AsyncIOSpec with Matchers{
 
   implicit override def executionContext = scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 
-  val existingPath = "/images/stefan.png"
-  val nonExistingPath = "/images/stefans.png"
+  val existingPath = "images/stefan.png"
+  val nonExistingPath = "images/stefans.png"
 
   describe("An ImageAction") {
     describe("when checking") {
       describe("an non existing File") {
-        it("should return a domain excption") {
+        it("should return a domain exception") {
           LoadImageAction.checkFileAccess(existingPath).value.asserting( _.isRight shouldBe true)
         }
       }
