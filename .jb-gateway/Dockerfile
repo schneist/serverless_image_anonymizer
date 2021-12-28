@@ -4,6 +4,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV LC_ALL=C.UTF-8
 
 RUN apt-get update
+RUN deb https://deb.nodesource.com/node_14.x focal main
+RUN deb-src https://deb.nodesource.com/node_14.x focal main
 RUN apt-get install -y \
   git \
   openjdk-11-jdk \
