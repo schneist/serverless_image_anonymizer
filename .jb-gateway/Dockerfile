@@ -12,7 +12,8 @@ RUN apt-get install -y \
   apt-transport-https \
   curl \
   gnupg2 \
-  openssh-client
+  openssh-client \
+  build-essential
 
   
 RUN echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" | tee /etc/apt/sources.list.d/sbt.list
