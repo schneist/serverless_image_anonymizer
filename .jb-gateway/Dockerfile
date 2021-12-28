@@ -38,9 +38,6 @@ RUN apt-get update --fix-missing && \
 	##############################################################################
 	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.39.1/install.sh | bash && \
 	source $NVM_DIR/nvm.sh && \
-	nvm install $NODE_VERSION && \
-	nvm cache clear && \
-	apt-get remove -y curl && \
-	rm -rf /var/lib/apt/lists/*
+	nvm install $NODE_VERSION 
 
 ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
