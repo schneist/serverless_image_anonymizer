@@ -24,8 +24,8 @@ RUN apt-get install -y sbt
 
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 
+SHELL ["/bin/bash", "--login", "-i", "-c"]
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+RUN source /root/.bashrc && nvm install node 
+RUN source /root/.bashrc && nvm use node 
 SHELL ["/bin/bash", "--login", "-c"]
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-RUN nvm install node
-RUN nvm use node
-RUN nvm alias default node
