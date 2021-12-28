@@ -14,11 +14,11 @@ RUN apt-get install -y \
   gnupg2 \
   openssh-client
 
-RUN echo "deb https://deb.nodesource.com/node_14.x focal main" | tee /etc/apt/sources.list.d/node.list
-RUN apt-get update
-RUN apt-get install -y \
-  nodejs \
-  npm
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+ENV NVM_DIR=/root/.nvm
+RUN . "$NVM_DIR/nvm.sh" && nvm install latest
+RUN . "$NVM_DIR/nvm.sh" && nvm use latest
+RUN . "$NVM_DIR/nvm.sh" && nvm alias default latest
   
 RUN echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" | tee /etc/apt/sources.list.d/sbt.list
 RUN echo "deb https://repo.scala-sbt.org/scalasbt/debian /" | tee /etc/apt/sources.list.d/sbt_old.list
