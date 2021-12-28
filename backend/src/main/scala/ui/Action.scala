@@ -53,15 +53,16 @@ object SharpToPNGBufferAction extends Action[EnvironmentWithExecutionContext,Sha
   }
 }
 
-object FileWriteAction extends Action[EnvironmentWithExecutionContext,Buffer,Unit,LoadImageErrors] {
-  override def execute[Err >: LoadImageErrors](buffer: Buffer)
+
+object FileWriteAction extends Action[EnvironmentWithExecutionContext,(Buffer,String),Unit,LoadImageErrors] {
+  override def execute[Err >: LoadImageErrors](input: (Buffer,String))
                                               (using environment: EnvironmentWithExecutionContext,
 
                                               ): EitherT[IO, Err, Unit] = {
     implicit val ec = environment.getExecutionContext()
     EitherT(
       IO.fromFuture(IO(
-        typings.node.fsPromisesMod.writeFile( """/images/out.png""",buffer).toFuture.map(_.asInstanceOf[Unit])
+        typings.node.fsPromisesMod.writeFile(input._2,input._1).toFuture.map(_.asInstanceOf[Unit])
           .transform { _ match {
             case s: Success[Unit] ⇒ Try(Right(()))
             case f: _ ⇒ Try(Left(FileNotFound()))

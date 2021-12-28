@@ -4,7 +4,7 @@ import cats.data.{EitherT, EitherTMonad}
 import cats.effect.*
 import cats.effect.unsafe.IORuntime.global
 import org.scalatest.funspec.*
-import ui.*
+import ui.{LoadImageAction, *}
 
 import concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.{Await, ExecutionContext, ExecutionContextExecutor, Future}
@@ -34,9 +34,6 @@ class ActionTest extends AsyncFunSpec with AsyncIOSpec with Matchers{
     override def getExecutionContext(): ExecutionContext = scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
   }
 
-
-
-
   implicit override def executionContext = scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 
   val existingPath = "images/stefan.png"
@@ -45,7 +42,7 @@ class ActionTest extends AsyncFunSpec with AsyncIOSpec with Matchers{
   describe("An ImageAction") {
     describe("when checking") {
       describe("an non existing File") {
-        it("should return a domain exception") {
+        it("should return a domain excption") {
           LoadImageAction.checkFileAccess(existingPath).value.asserting( _.isRight shouldBe true)
         }
       }
@@ -57,12 +54,12 @@ class ActionTest extends AsyncFunSpec with AsyncIOSpec with Matchers{
     }
     describe("when opening") {
       describe("an  existing File") {
-        it("should return a domain excption") {
+        it("should return the File Content as UInt8Array") {
           LoadImageAction.execute(existingPath).value.asserting( _.isRight shouldBe true)
         }
       }
       describe("an non existing File") {
-        it("should return the File Content as UInt8Array") {
+        it("should return a domain excption") {
           LoadImageAction.execute(nonExistingPath).value.asserting( _.isLeft shouldBe true)
         }
       }
@@ -70,7 +67,7 @@ class ActionTest extends AsyncFunSpec with AsyncIOSpec with Matchers{
   }
   describe("An ExtractImageDataAction") {
     describe("when transforming") {
-      it("should retunr a Tensor") {
+      it("should return a Tensor") {
         val aa = for {
           array <- LoadImageAction.execute(existingPath)
           b <- ExtractImageDataAction.execute(array)
@@ -106,6 +103,7 @@ class ActionTest extends AsyncFunSpec with AsyncIOSpec with Matchers{
   describe("An AnonymizationFlow ") {
 
     it("should anonymize a face") {
+      val outp = """images/stefan_anon.png"""
       val aa = for {
         array <- LoadImageAction.execute(existingPath)
         imageData <- ExtractImageDataAction.execute(array)
@@ -115,8 +113,9 @@ class ActionTest extends AsyncFunSpec with AsyncIOSpec with Matchers{
         boxes ← BoundingBoxAction.execute(estimate)
         blurred ← BlurAction.execute((sharp,boxes))
         png ← SharpToPNGBufferAction.execute(blurred)
-        written ← FileWriteAction.execute(png)
-      } yield written
+        written ← FileWriteAction.execute((png,outp))
+        loaded <- LoadImageAction.checkFileAccess(outp)
+      } yield loaded
       aa.value.asserting(_.isRight shouldBe true)
     }
   }
