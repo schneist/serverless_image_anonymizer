@@ -105,7 +105,7 @@ class ActionTest extends AsyncFunSpec with AsyncIOSpec with Matchers{
 
   describe("An AnonymizationFlow ") {
 
-    it("should find anyonymize a face") {
+    it("should anonymize a face") {
       val aa = for {
         array <- LoadImageAction.execute(existingPath)
         imageData <- ExtractImageDataAction.execute(array)
