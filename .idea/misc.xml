@@ -8,10 +8,6 @@
       <list>
         <OpenedFileInfo>
           <option name="caretOffset" value="0" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/project/plugins.sbt" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="0" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/.jb-gateway/Dockerfile" />
         </OpenedFileInfo>
         <OpenedFileInfo>
@@ -19,12 +15,16 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/.jvmopts" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="1203" />
+          <option name="caretOffset" value="0" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/.gitignore" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="420" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/build.sbt" />
         </OpenedFileInfo>
         <OpenedFileInfo>
           <option name="caretOffset" value="0" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/.gitignore" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/project/plugins.sbt" />
         </OpenedFileInfo>
       </list>
     </option>

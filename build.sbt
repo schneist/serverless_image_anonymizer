@@ -10,12 +10,12 @@ lazy val commonSettings = Seq(
   libraryDependencies ++= { Seq(
     "com.lihaoyi" %%% "upickle" % "1.4.3",
     "org.typelevel" %%% "cats-core" % "2.7.0",
-    "org.typelevel" %%% "cats-effect" % "3.3.1",
+    "org.typelevel" %%% "cats-effect" % "3.3.3",
     "org.scalatest" %%% "scalatest" % "3.2.10" % Test,
     "org.typelevel" %%% "cats-effect-testing-scalatest" % "1.4.0" % Test
 
     )},
-  scalaJSLinkerConfig ~= (_.withModuleKind(ModuleKind.CommonJSModule)),
+  scalaJSLinkerConfig ~= (_.withModuleKind(ModuleKind.CommonJSModule))
 
 )
 
