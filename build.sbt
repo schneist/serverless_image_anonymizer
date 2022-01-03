@@ -31,7 +31,7 @@ lazy val backend = (project in file("backend"))
   .enablePlugins(ScalablyTypedConverterPlugin)
   .settings(commonSettings)
   .settings(
-    scalaJSUseMainModuleInitializer := true,
+    //scalaJSUseMainModuleInitializer := true,
     stUseScalaJsDom := true,
     stEnableScalaJsDefined :=  Selection.All,
     stEnableLongApplyMethod := false,
