@@ -4,8 +4,6 @@
 /target/*
 /handler/
 /handler/*
-/.idea/*
-/.idea/
 /.aws-sam/
 /.aws-sam/*
 /project/target/
