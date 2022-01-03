@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="sbt: org.scalablytyped:cross-fetch_sjs1_3:3.1.4-17b2e6:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/local/org.scalablytyped/cross-fetch_sjs1_3/3.1.4-17b2e6/jars/cross-fetch_sjs1_3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/local/org.scalablytyped/cross-fetch_sjs1_3/3.1.4-17b2e6/srcs/cross-fetch_sjs1_3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

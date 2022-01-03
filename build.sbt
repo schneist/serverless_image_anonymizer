@@ -1,11 +1,10 @@
 import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport.scalaJSLinkerConfig
 import sbt.Keys.{libraryDependencies, scalaVersion}
-
+ThisBuild / scalaVersion := "3.1.0"
 
 lazy val commonSettings = Seq(
   version := "1.0.0",
 
-  scalaVersion := "3.1.0",
   name := "ScaLambda-Frontend-BluePrint",
   libraryDependencies ++= { Seq(
     "com.lihaoyi" %%% "upickle" % "1.4.3",
@@ -14,7 +13,7 @@ lazy val commonSettings = Seq(
     "org.scalatest" %%% "scalatest" % "3.2.10" % Test,
     "org.typelevel" %%% "cats-effect-testing-scalatest" % "1.4.0" % Test
 
-    )},
+  )},
   scalaJSLinkerConfig ~= (_.withModuleKind(ModuleKind.CommonJSModule))
 
 )
@@ -23,7 +22,6 @@ lazy val shared = (project in file("shared"))
   .enablePlugins(ScalaJSPlugin)
   .settings(commonSettings)
   .settings(
-
   )
 
 lazy val backend = (project in file("backend"))
@@ -49,13 +47,31 @@ lazy val backend = (project in file("backend"))
   )
   .dependsOn(shared)
 
+lazy val ScalaJsReactVer = "2.0.0"
 
 lazy val frontend = (project in file("frontend"))
   .enablePlugins(ScalaJSPlugin)
   .enablePlugins(ScalaJSBundlerPlugin)
   .settings(commonSettings)
   .settings(
-    libraryDependencies += "com.github.japgolly.scalajs-react" %%% "core" % "2.0.0",
+
+
+    libraryDependencies ++= Seq(
+
+      // Optional extensions for Cats / Cats Effect
+      // (Note: these need to come before "core")
+      "com.github.japgolly.scalajs-react" %%% "core-ext-cats"        % ScalaJsReactVer,
+      "com.github.japgolly.scalajs-react" %%% "core-ext-cats_effect" % ScalaJsReactVer,
+
+      // Mandatory
+      "com.github.japgolly.scalajs-react" %%% "core"                 % ScalaJsReactVer,
+
+      // Optional utils exclusive to scalajs-react
+      "com.github.japgolly.scalajs-react" %%% "extra"                % ScalaJsReactVer,
+
+      // For unit tests
+      "com.github.japgolly.scalajs-react" %%% "test"                 % ScalaJsReactVer % Test,
+    ),
     Compile / npmDependencies ++= Seq(
       "react" -> "17.0.2",
       "react-dom" -> "17.0.2",

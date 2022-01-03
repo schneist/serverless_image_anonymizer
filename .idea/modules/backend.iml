@@ -20,26 +20,26 @@
     <orderEntry type="library" name="sbt: com.olvind:scalablytyped-runtime_sjs1_3:2.4.2:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scala-js:scala-js-macrotask-executor_sjs1_3:1.0.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scala-js:scalajs-dom_sjs1_3:2.0.0:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scala-js:scalajs-library_2.13:1.7.1:jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="sbt: org.scala-js:scalajs-test-bridge_2.13:1.7.1:jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="sbt: org.scala-js:scalajs-test-interface_2.13:1.7.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scala-js:scalajs-library_2.13:1.8.0:jar" level="project" />
+    <orderEntry type="library" scope="TEST" name="sbt: org.scala-js:scalajs-test-bridge_2.13:1.8.0:jar" level="project" />
+    <orderEntry type="library" scope="TEST" name="sbt: org.scala-js:scalajs-test-interface_2.13:1.8.0:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: org.scala-lang.modules:scala-xml_sjs1_3:2.0.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.13.6:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scala-lang:scala3-library_3:3.0.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scala-lang:scala3-library_sjs1_3:3.1.0:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scalablytyped:ajv_sjs1_3:6.12.6-d7e71a:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scalablytyped:aws-lambda_sjs1_3:8.10.85-fc7367:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scalablytyped:canvas_sjs1_3:2.8.0-608727:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scalablytyped:cloudevents_sjs1_3:5.0.0-f6efc9:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scalablytyped:cross-fetch_sjs1_3:3.1.4-160b4d:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scalablytyped:node_sjs1_3:16.11.9-1411b0:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scalablytyped:sharp_sjs1_3:0.29.3-f1391c:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scalablytyped:std_sjs1_3:4.3-c439dd:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scalablytyped:tensorflow-models__blazeface_sjs1_3:0.0.7-ee3378:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scalablytyped:tensorflow__tfjs-converter_sjs1_3:3.12.0-95d89e:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scalablytyped:tensorflow__tfjs-core_sjs1_3:3.12.0-957c04:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scalablytyped:tensorflow__tfjs-node_sjs1_3:3.11.0-ff825f:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scalablytyped:tensorflow__tfjs_sjs1_3:3.11.0-8fe900:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalablytyped:ajv_sjs1_3:6.12.6-bc1de2:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalablytyped:aws-lambda_sjs1_3:8.10.85-c9e369:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalablytyped:canvas_sjs1_3:2.8.0-d07c79:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalablytyped:cloudevents_sjs1_3:5.0.0-5bef7d:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalablytyped:cross-fetch_sjs1_3:3.1.4-17b2e6:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalablytyped:node_sjs1_3:16.11.9-0d7700:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalablytyped:sharp_sjs1_3:0.29.3-1b373d:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalablytyped:std_sjs1_3:4.3-369498:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalablytyped:tensorflow-models__blazeface_sjs1_3:0.0.7-17382f:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalablytyped:tensorflow__tfjs-converter_sjs1_3:3.12.0-5ef1c9:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalablytyped:tensorflow__tfjs-core_sjs1_3:3.12.0-fd3467:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalablytyped:tensorflow__tfjs-node_sjs1_3:3.11.0-6b282f:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scalablytyped:tensorflow__tfjs_sjs1_3:3.11.0-623a3c:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: org.scalactic:scalactic_sjs1_3:3.2.10:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: org.scalatest:scalatest-core_sjs1_3:3.2.10:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: org.scalatest:scalatest-diagrams_sjs1_3:3.2.10:jar" level="project" />
@@ -56,11 +56,11 @@
     <orderEntry type="library" scope="TEST" name="sbt: org.scalatest:scalatest-wordspec_sjs1_3:3.2.10:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: org.scalatest:scalatest_sjs1_3:3.2.10:jar" level="project" />
     <orderEntry type="library" name="sbt: org.typelevel:cats-core_sjs1_3:2.7.0:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.typelevel:cats-effect-kernel_sjs1_3:3.3.1:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.typelevel:cats-effect-std_sjs1_3:3.3.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.typelevel:cats-effect-kernel_sjs1_3:3.3.3:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.typelevel:cats-effect-std_sjs1_3:3.3.3:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: org.typelevel:cats-effect-testing-core_sjs1_3:1.4.0:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: org.typelevel:cats-effect-testing-scalatest_sjs1_3:1.4.0:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.typelevel:cats-effect_sjs1_3:3.3.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.typelevel:cats-effect_sjs1_3:3.3.3:jar" level="project" />
     <orderEntry type="library" name="sbt: org.typelevel:cats-kernel_sjs1_3:2.7.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.typelevel:simulacrum-scalafix-annotations_3:0.5.4:jar" level="project" />
     <orderEntry type="module" module-name="shared" exported="" />

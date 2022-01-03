@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="sbt: org.scalablytyped:sharp_sjs1_3:0.29.3-1b373d:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/local/org.scalablytyped/sharp_sjs1_3/0.29.3-1b373d/jars/sharp_sjs1_3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/local/org.scalablytyped/sharp_sjs1_3/0.29.3-1b373d/srcs/sharp_sjs1_3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

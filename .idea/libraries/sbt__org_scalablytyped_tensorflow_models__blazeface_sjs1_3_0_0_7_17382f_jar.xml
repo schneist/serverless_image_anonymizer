@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="sbt: org.scalablytyped:tensorflow-models__blazeface_sjs1_3:0.0.7-17382f:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/local/org.scalablytyped/tensorflow-models__blazeface_sjs1_3/0.0.7-17382f/jars/tensorflow-models__blazeface_sjs1_3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/local/org.scalablytyped/tensorflow-models__blazeface_sjs1_3/0.0.7-17382f/srcs/tensorflow-models__blazeface_sjs1_3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
