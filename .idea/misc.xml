@@ -31,12 +31,12 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/.bsp/sbt.json" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="146" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/shared/src/main/scala/shared/Domain.scala" />
+          <option name="caretOffset" value="880" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/frontend/src/main/scala/ui/UI.scala" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="278" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/frontend/src/main/scala/ui/UI.scala" />
+          <option name="caretOffset" value="146" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/shared/src/main/scala/shared/Domain.scala" />
         </OpenedFileInfo>
       </list>
     </option>
