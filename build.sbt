@@ -18,6 +18,17 @@ lazy val commonSettings = Seq(
 
 )
 
+
+lazy val NodeFS = (project in file("nodefs"))
+  .enablePlugins(ScalaJSPlugin)
+  .settings(commonSettings)
+  .enablePlugins(ScalablyTypedConverterPlugin)
+  .settings(
+    Compile / npmDependencies ++= Seq(
+      "@types/node" -> " 17.0.8")
+  )
+  .dependsOn(shared)
+
 lazy val shared = (project in file("shared"))
   .enablePlugins(ScalaJSPlugin)
   .settings(commonSettings)

@@ -7,36 +7,44 @@
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="caretOffset" value="376" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/project/plugins.sbt" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="0" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/.jb-gateway/Dockerfile" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="56" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/.jvmopts" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="0" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/.gitignore" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="243" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/build.sbt" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="0" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/.bsp/sbt.json" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
           <option name="caretOffset" value="880" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/frontend/src/main/scala/ui/UI.scala" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="146" />
+          <option name="caretOffset" value="505" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/shared/src/main/scala/shared/Domain.scala" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="794" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/build.sbt" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="3095" />
+          <option name="fileUrl" value="jar://$USER_HOME$/.ivy2/local/org.scalablytyped/node_sjs1_3/17.0.8-a9780f/srcs/node_sjs1_3-sources.jar!/typings/node/nodeFsMod.scala" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="162822" />
+          <option name="fileUrl" value="jar://$USER_HOME$/.ivy2/local/org.scalablytyped/node_sjs1_3/17.0.8-a9780f/jars/node_sjs1_3.jar!/typings/node/fsMod/package$package.tasty" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="6195" />
+          <option name="fileUrl" value="jar://$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.6/scala-library-2.13.6-sources.jar!/scala/Predef.scala" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="1660" />
+          <option name="fileUrl" value="jar://$USER_HOME$/.ivy2/local/org.scalablytyped/node_sjs1_3/17.0.8-a9780f/srcs/node_sjs1_3-sources.jar!/typings/node/fsPromisesMod.scala" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="239" />
+          <option name="fileUrl" value="jar://$USER_HOME$/.ivy2/local/org.scalablytyped/node_sjs1_3/17.0.8-a9780f/srcs/node_sjs1_3-sources.jar!/typings/node/fsMod/Dirent.scala" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="374" />
+          <option name="fileUrl" value="jar://$USER_HOME$/.ivy2/local/org.scalablytyped/node_sjs1_3/17.0.8-a9780f/srcs/node_sjs1_3-sources.jar!/typings/node/anon/ObjectEncodingOptionswithEncoding.scala" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="145" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/nodefs/src/main/scala/nodefs/NodeFSStorage.scala" />
         </OpenedFileInfo>
       </list>
     </option>

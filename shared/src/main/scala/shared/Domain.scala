@@ -8,11 +8,10 @@ sealed trait Action extends Domain
 
 sealed trait Collection extends Domain
 
-sealed trait Storage extends Domain
+trait Storage
 
 
-sealed trait FileDescriptorStorage extends Storage {
-
+trait FileDescriptorStorage extends Storage {
 
   type path
   type promise[_]
@@ -22,8 +21,11 @@ sealed trait FileDescriptorStorage extends Storage {
   type userID
   type groupID
 
-  def open(p:path): filedescriptor
-  def close(p:path): filedescriptor
+  def openR(p:path): promise[filedescriptor]
+  def openRW(p:path): promise[filedescriptor]
+  def close(f:filedescriptor): promise[Unit]
+
+  def readDir(p:path):promise[Seq[path]]
 
   def read(f:filedescriptor) : promise[bytestream]
   def write(f:filedescriptor,content: bytestream) : promise[Unit]

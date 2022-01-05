@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ScalaCompilerConfiguration">
     <profile name="sbt 1" modules="serverless_image_anonymizer,serverless_image_anonymizer_5871" />
-    <profile name="sbt 2" modules="backend,frontend,shared">
+    <profile name="sbt 2" modules="NodeFS,backend,frontend,shared">
       <parameters>
         <parameter value="-scalajs" />
       </parameters>
