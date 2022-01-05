@@ -24,6 +24,10 @@ lazy val NodeFS = (project in file("nodefs"))
   .settings(commonSettings)
   .enablePlugins(ScalablyTypedConverterPlugin)
   .settings(
+    libraryDependencies ++= Seq(
+      "org.scalatest" %% "scalatest" % "3.2.9" % Test,
+      "com.github.dwickern" %% "scala-nameof" % "4.0.0" % "provided",
+    ),
     Compile / npmDependencies ++= Seq(
       "@types/node" -> " 17.0.8")
   )
