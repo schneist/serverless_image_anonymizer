@@ -8,7 +8,7 @@ import typings.node.fsMod.PathLike
 import scala.scalajs.js.Promise
 import scala.scalajs.js.typedarray.Uint8Array
 
-class NodeFSStorage extends  FileDescriptorStorage{
+object NodeFSStorage extends  FileDescriptorStorage{
 
   override type path = PathLike
   override type promise[_] = Promise[_]
@@ -20,7 +20,7 @@ class NodeFSStorage extends  FileDescriptorStorage{
   override type dirEnt = typings.node.nodeFsMod.Dirent
 
   override def openR(p: path): promise[filedescriptor] = typings.node.fsPromisesMod.open(p,"r")
-  override def openRW(p: path): promise[filedescriptor] = typings.node.fsPromisesMod.open(p,"r+")
+  override def openRW(p: path): promise[filedescriptor] = typings.node.fsPromisesMod.open(p,"w+")
 
   override def close(f: filedescriptor): promise[Unit] = f.close()
 

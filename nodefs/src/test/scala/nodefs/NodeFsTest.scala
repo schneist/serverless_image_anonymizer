@@ -5,9 +5,12 @@ import org.scalatest.matchers.should.Matchers
 
 class NodeFsTest  extends AnyFunSpec  with Matchers {
 
+
   describe ("basic file ops in tmp" ) {
 
     it("should not load an unreachable file") {
+      val f = NodeFSStorage.openRW("/tmp/test.txt")
+
     }
   }
 }

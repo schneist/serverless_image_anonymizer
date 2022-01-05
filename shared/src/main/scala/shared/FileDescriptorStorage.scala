@@ -33,7 +33,7 @@ trait FileDescriptorStorage extends Storage {
 
   def chmod(p:path, mode: permissions): promise[Unit]
 
-  def chown(f: filedescriptor, u: userID, g: groupID): promise[Unit]
+  def chown(p:path, u: userID, g: groupID): promise[Unit]
 
 
 }
