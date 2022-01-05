@@ -19,11 +19,7 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/build.sbt" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="6195" />
-          <option name="fileUrl" value="jar://$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.6/scala-library-2.13.6-sources.jar!/scala/Predef.scala" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="95957" />
+          <option name="caretOffset" value="8163" />
           <option name="fileUrl" value="jar://$USER_HOME$/.ivy2/local/org.scalablytyped/node_sjs1_3/17.0.8-a9780f/srcs/node_sjs1_3-sources.jar!/typings/node/fsPromisesMod.scala" />
         </OpenedFileInfo>
         <OpenedFileInfo>
@@ -31,20 +27,24 @@
           <option name="fileUrl" value="jar://$USER_HOME$/.ivy2/local/org.scalablytyped/node_sjs1_3/17.0.8-a9780f/srcs/node_sjs1_3-sources.jar!/typings/node/fsMod/Dirent.scala" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="292" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/nodefs/src/main/scala/nodefs/NodeFSStorage.scala" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
           <option name="caretOffset" value="7072" />
           <option name="fileUrl" value="jar://$USER_HOME$/.ivy2/local/org.scalablytyped/node_sjs1_3/17.0.8-a9780f/srcs/node_sjs1_3-sources.jar!/typings/node/bufferMod.scala" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="22" />
+          <option name="caretOffset" value="14" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/nodefs/src/test/scala/nodefs/NodeFsTest.scala" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="578" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/shared/src/main/scala/shared/FileDescriptorStorage.scala" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="67" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/nodefs/src/test/scala/nodefs/NodeFsTest.scala" />
+          <option name="caretOffset" value="163056" />
+          <option name="fileUrl" value="jar://$USER_HOME$/.ivy2/local/org.scalablytyped/node_sjs1_3/17.0.8-a9780f/jars/node_sjs1_3.jar!/typings/node/fsMod/package$package.tasty" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="1530" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/nodefs/src/main/scala/nodefs/NodeFSStorage.scala" />
         </OpenedFileInfo>
       </list>
     </option>

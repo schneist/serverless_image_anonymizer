@@ -5,7 +5,7 @@ import org.scalatest.matchers.should.Matchers
 
 class NodeFsTest  extends AnyFunSpec  with Matchers {
 
-  describe ("Loaded Bookings" ) {
+  describe ("basic file ops in tmp" ) {
 
     it("should not load an unreachable file") {
     }

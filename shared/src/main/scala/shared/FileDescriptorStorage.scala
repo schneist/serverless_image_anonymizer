@@ -27,13 +27,11 @@ trait FileDescriptorStorage extends Storage {
 
   def rmdir(p: path): promise[Unit]
 
-  def create(f: filedescriptor): promise[Unit]
+  def unlink(p:path): promise[Unit]
 
-  def unlink(f: filedescriptor): promise[Unit]
+  def link(existingPath:path,newPath:path): promise[Unit]
 
-  def link(f: filedescriptor): promise[Unit]
-
-  def chmod(f: filedescriptor, p: permissions): promise[Unit]
+  def chmod(p:path, mode: permissions): promise[Unit]
 
   def chown(f: filedescriptor, u: userID, g: groupID): promise[Unit]
 
