@@ -7,9 +7,8 @@ lazy val commonSettings = Seq(
 
   name := "ScaLambda-Frontend-BluePrint",
   libraryDependencies ++= { Seq(
-    "com.lihaoyi" %%% "upickle" % "1.4.3",
     "org.typelevel" %%% "cats-core" % "2.7.0",
-    "org.typelevel" %%% "cats-effect" % "3.3.3",
+    "org.typelevel" %%% "cats-effect" % "3.3.4",
     "org.scalatest" %%% "scalatest" % "3.2.10" % Test,
     "org.typelevel" %%% "cats-effect-testing-scalatest" % "1.4.0" % Test
 
@@ -25,7 +24,7 @@ lazy val NodeFS = (project in file("nodefs"))
   .enablePlugins(ScalablyTypedConverterPlugin)
   .settings(
     libraryDependencies ++= Seq(
-      "org.scalatest" %% "scalatest" % "3.2.9" % Test,
+      "org.scalatest" %% "scalatest" % "3.2.10" % Test,
       "com.github.dwickern" %% "scala-nameof" % "4.0.0" % "provided",
     ),
     Compile / npmDependencies ++= Seq(

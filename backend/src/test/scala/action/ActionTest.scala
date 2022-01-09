@@ -6,7 +6,6 @@ import cats.effect.unsafe.IORuntime.global
 import org.scalatest.funspec.*
 import ui.{LoadImageAction, *}
 
-import concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.{Await, ExecutionContext, ExecutionContextExecutor, Future}
 import cats.implicits.*
 import cats.data.EitherT.*
