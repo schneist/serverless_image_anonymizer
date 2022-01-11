@@ -1,1 +1,1 @@
-# ScaLambda_Frontent_Blueprint
+This project explores how to use ScalaJS and Containeriszation to build an image processing plattforrm that is based on a DSL that composes steps and optimizes their execustion plan based on registered resources. 
