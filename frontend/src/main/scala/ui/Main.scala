@@ -9,9 +9,7 @@ object Main {
   @JSExportTopLevel(name = "Main")
   def handle(): String = {
 
-    val ret = ReactDOMServer.renderToString(<.div(Ticker.Timer()))
-    println(ret)
-    ret
+   " dasf"
 
   }
 }
