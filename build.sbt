@@ -28,7 +28,8 @@ lazy val NodeFS = (project in file("nodefs"))
       "com.github.dwickern" %% "scala-nameof" % "4.0.0" % "provided",
     ),
     Compile / npmDependencies ++= Seq(
-      "@types/node" -> " 17.0.8")
+      "@types/node" -> " 17.0.8"
+    )
   )
   .dependsOn(shared)
 
@@ -48,6 +49,7 @@ lazy val backend = (project in file("backend"))
     stEnableScalaJsDefined :=  Selection.All,
     stEnableLongApplyMethod := false,
     Compile / npmDependencies ++= Seq(
+      "typescript" -> "4.1.4",
       "@types/node" -> " 16.11.9",
       "@types/aws-lambda" -> "8.10.85",
       "cloudevents" -> "5.0.0",

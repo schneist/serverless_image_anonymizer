@@ -6,7 +6,7 @@ import japgolly.scalajs.react.vdom.html_<^._
 import japgolly.scalajs.react.ReactCats._
 
 
-object UI {
+object Ticker {
   case class State(secondsElapsed: Long)
 
   class Backend($: BackendScope[Unit, State]) {
