@@ -87,6 +87,7 @@ lazy val frontend = (project in file("frontend"))
 
       // For unit tests
       "com.github.japgolly.scalajs-react" %%% "test"                 % ScalaJsReactVer % Test,
+      "dev.optics" %% "monocle-core"  % "3.1.0",
     ),
     Compile / npmDependencies ++= Seq(
       "react" -> "17.0.2",

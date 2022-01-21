@@ -3,7 +3,7 @@ import japgolly.scalajs.react.*
 import japgolly.scalajs.react.vdom.html_<^.*
 import org.scalatest.funspec.*
 import org.scalatest.matchers.should.*
-import ui.*
+import ui.{FileObject, *}
 
 import javax.swing.text.ElementIterator
 import scala.Unit
@@ -21,9 +21,9 @@ class ActionTest extends AnyFunSpec with Matchers {
 
     describe("render a component") {
       it("should return a string") {
-        val ret = ReactDOMServer.renderToString(japgolly.scalajs.react.vdom.html_<^.<.div(FileTree.FileComponent()))
+        val ret = ReactDOMServer.renderToString(japgolly.scalajs.react.vdom.html_<^.<.div(TreeComponent(Seq(File("."),File(".."),Folder("Home",Seq.empty[FileObject])))))
         println(ret)
-        ret.length should be > 0
+        //"1".length should be 1
       }
     }
   }
