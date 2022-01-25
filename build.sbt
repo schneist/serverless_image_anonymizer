@@ -84,7 +84,7 @@ lazy val frontend = (project in file("frontend"))
 
       // Optional utils exclusive to scalajs-react
       "com.github.japgolly.scalajs-react" %%% "extra"                % ScalaJsReactVer,
-
+      "com.github.japgolly.scalajs-react" %%% "extra-ext-monocle3"   % ScalaJsReactVer,
       // For unit tests
       "com.github.japgolly.scalajs-react" %%% "test"                 % ScalaJsReactVer % Test,
       "dev.optics" %% "monocle-core"  % "3.1.0",
