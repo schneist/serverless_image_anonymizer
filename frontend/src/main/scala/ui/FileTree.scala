@@ -4,9 +4,13 @@ import scalajs.js
 import japgolly.scalajs.react.*
 import japgolly.scalajs.react.vdom.html_<^.*
 import japgolly.scalajs.react.ReactCats.*
-import japgolly.scalajs.react.extra._
-import monocle._
-import japgolly.scalajs.react.ReactMonocle._
+import japgolly.scalajs.react.extra.*
+import monocle.*
+import japgolly.scalajs.react.ReactMonocle.*
+import shared.FileDescriptorStorage
+import ui.FileObjectComponent.State
+
+import scala.scalajs.js.Promise
 
 sealed trait FileThingy{
   def displayName() :String
@@ -48,8 +52,8 @@ object FileObjectComponent {
 
   type State = FileThingy
 
-  final case class Props(ss: StateSnapshot[State]) {
-    @inline def render = Comp(this)
+  final case class Props(ss: StateSnapshot[State]){
+    @inline def render = Comp(ss.value)(this)
   }
 
   given reusabilityState: Reusability[State] = Reusability.derive
@@ -57,15 +61,17 @@ object FileObjectComponent {
   given reusabilityProps: Reusability[Props] = Reusability.derive
 
 
-   val Comp = ScalaComponent.builder[Props]
+  val Comp = (f:FileThingy) => ScalaComponent.builder[Props]
+    .initialState(f)
     .renderBackend[Backend]
-     .configure(Reusability.shouldComponentUpdate)
+    .configure(Reusability.shouldComponentUpdate)
     .build
 
 
-  final class Backend(bs: BackendScope[Props, Unit]) {
+  final class Backend(bs: BackendScope[Props, State]) {
 
     private val ssNameFn = StateSnapshot.withReuse.zoomL(FileThingy.name).prepareViaProps(bs)(_.ss)
+
 
     def render(p: Props): VdomElement = <.div(p.ss.value.displayName())
     /*
@@ -82,6 +88,24 @@ object FileObjectComponent {
 
 }
 
+object Top {
+
+  type State = FileThingy
+  type Props = FileDescriptorStorage[Promise]
+
+  final class Backend($: BackendScope[Props, State]) {
+
+    def render(state: State): VdomElement = {
+      given reusabilityStateFT: Reusability[FileThingy] = Reusability.derive
+      FileObjectComponent.Props(japgolly.scalajs.react.extra.internal.StateSnapshot.withReuse.apply(state).readOnly).render
+    }
+  }
+
+  def Component  = ScalaComponent.builder[FileDescriptorStorage[Promise]]
+    .initialState(Directory("/").asInstanceOf[FileThingy])
+    .renderBackend[Backend]
+    .build
+}
 
 
 

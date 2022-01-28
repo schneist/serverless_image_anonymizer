@@ -14,23 +14,30 @@ import scala.language.postfixOps
 import scala.scalajs.js.JSON
 import scala.scalajs.js.typedarray.Uint8Array
 import scala.util.{Failure, Success, Try}
-import japgolly.scalajs.react._
-import japgolly.scalajs.react.vdom.html_<^._
-import japgolly.scalajs.react.ReactMonocle._
-import japgolly.scalajs.react.extra._
+import japgolly.scalajs.react.*
+import japgolly.scalajs.react.vdom.html_<^.*
+import japgolly.scalajs.react.ReactMonocle.*
+import japgolly.scalajs.react.StateAccessor.{ReadImpureWritePure, ReadWrite, ReadWritePure}
+import japgolly.scalajs.react.component.builder.Lifecycle
+import japgolly.scalajs.react.extra.*
+import japgolly.scalajs.react.util.Effect.Id
+import japgolly.scalajs.react.util.Util.identityFn
+import nodefs.NodeFSStorage
 
 class ActionTest extends AnyFunSpec with Matchers {
 
-  given japgolly.scalajs.react.StateAccessor.ReadImpureWritePure[ui.Directory, FileThingy] = ???
+
+
+
 
 
   describe("React") {
 
     describe("render a component") {
       it("should return a string") {
-        val ret = ReactDOMServer.renderToString(japgolly.scalajs.react.vdom.html_<^.<.div(FileObjectComponent.Comp(Props(react.extra.StateSnapshot.of(Directory("ttor")))))) //Seq(File("."),File(".."),Folder("Home",Seq.empty[FileObject])))))
-       // println(ret)
-        //"1".length should be 1
+        val ret = ReactDOMServer.renderToString(japgolly.scalajs.react.vdom.html_<^.<.div(Top.Component(NodeFSStorage)))//Seq(File("."),File(".."),Folder("Home",Seq.empty[FileObject])))))
+        println(ret)
+       // "1".length should be 1
       }
     }
   }

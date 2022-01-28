@@ -100,6 +100,7 @@ lazy val frontend = (project in file("frontend"))
 
   )
   .dependsOn(shared)
+  .dependsOn(NodeFS)
 
 
 
