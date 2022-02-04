@@ -35,7 +35,7 @@ class ActionTest extends AnyFunSpec with Matchers {
 
     describe("render a component") {
       it("should return a string") {
-        val ret = ReactDOMServer.renderToString(japgolly.scalajs.react.vdom.html_<^.<.div(Top.Component(NodeFSStorage)))//Seq(File("."),File(".."),Folder("Home",Seq.empty[FileObject])))))
+        val ret = ReactDOMServer.renderToString(japgolly.scalajs.react.vdom.html_<^.<.div(FileTreeComponent(NodeFSStorage).Component(NodeFSStorage)))//Seq(File("."),File(".."),Folder("Home",Seq.empty[FileObject])))))
         println(ret)
        // "1".length should be 1
       }

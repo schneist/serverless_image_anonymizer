@@ -5,7 +5,7 @@ ThisBuild / scalaVersion := "3.1.0"
 lazy val commonSettings = Seq(
   version := "1.0.0",
 
-  name := "ScaLambda-Frontend-BluePrint",
+  name := "",
   libraryDependencies ++= { Seq(
     "org.typelevel" %%% "cats-core" % "2.7.0",
     "org.typelevel" %%% "cats-effect" % "3.3.4",
